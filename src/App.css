@@ -1,0 +1,16 @@
+.App{
+  font-family: 'Work Sans', sans-serif;
+  position: relative;
+}
+.deleteAlert{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 1rem auto;
+  width: 15rem;
+  background-color: rgb(253, 83, 83);
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  border-radius: 20px;
+}

@@ -1,0 +1,55 @@
+.sideNav{
+    max-width: 7rem;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+.sideNavInner{
+    width: 100%;
+    height: 80%;
+    border-right: 1px solid rgb(223, 223, 223);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.addBtn{
+    width: 60px;
+    height: 60px;
+    background-color: black;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+}
+.colors{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 10px;
+    margin-top: 2rem;
+}
+.color{
+    background-color: aqua;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#c1{
+    background-color: #FEC971;
+}
+#c2{
+    background-color: #FE9B71;
+}
+#c3{
+    background-color: #B592FD;
+}
+#c4{
+    background-color: #00D4FE;
+}
+#c5{
+    background-color: #E3EE8E;
+}
