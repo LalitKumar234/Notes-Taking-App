@@ -22,7 +22,8 @@ export default function App() {
         note: "",
         color: color,
         currDate: new Date().toLocaleString('en-GB'),
-        favorite: false
+        favorite: false,
+        pinned: false
       }
     ]);
   };
@@ -42,12 +43,18 @@ export default function App() {
     setFavorite(!favorite)
 }
 
-  // const handlePin = (notes, index) => {
-  //   let pinned = addNote.filter((item) => item.notes !== notes);
-  //   pinned.unshift(addNote[index]);
-  //   pinned.splice(index + 1, 1);
-  //   setAddNote(pinned);
-  // };
+  const handlePin = (notes, index) => {
+    if(!addNote.pinned){
+      addNote[index].pinned = true
+      let pinned = addNote.filter((item) => item.notes !== notes);
+      pinned.unshift(addNote[index]);
+      pinned.splice(index + 1, 1);
+      setAddNote(pinned);
+    }
+    else{
+      addNote[index].pinned = false
+    }
+  };
 
   const handleDelete = (index) => {
     console.log('ls', items[index])
@@ -70,7 +77,7 @@ export default function App() {
       }
       
       <SideNav handleAdd={handleAdd}/>
-      <Notes noteItems={addNote} handleAddText={handleAddText} handleFavorite={handleFavorite} handleDelete={handleDelete}/>
+      <Notes noteItems={addNote} handleAddText={handleAddText} handleFavorite={handleFavorite} handleDelete={handleDelete} handlePin={handlePin}/>
     </div>
   );
 }

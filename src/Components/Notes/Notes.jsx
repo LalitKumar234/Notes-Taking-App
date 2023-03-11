@@ -3,7 +3,7 @@ import './Notes.css'
 import { AiOutlineStar, AiFillStar, AiOutlineDelete } from 'react-icons/ai';
 import { BsThreeDotsVertical, BsFillPinAngleFill } from 'react-icons/bs';
 
-const Notes = ({ noteItems, handleAddText, handleFavorite, handleDelete }) => {
+const Notes = ({ noteItems, handleAddText, handleFavorite, handleDelete, handlePin }) => {
             
     const [footerDropDown, setFooterDropDown] = useState()
     console.log(footerDropDown)
@@ -11,7 +11,7 @@ const Notes = ({ noteItems, handleAddText, handleFavorite, handleDelete }) => {
     return (
         <div className="homeContainer">
             <div className="mainContainer">
-                <h1 className="heading">Notes</h1>
+                <h1 className="heading">Sticky Notes</h1>
                 <div className="notesContainerInner">
                     <div className="notes">
                         {noteItems.map((notes, index) => {
@@ -30,13 +30,18 @@ const Notes = ({ noteItems, handleAddText, handleFavorite, handleDelete }) => {
                                             placeholder="Write Something"
                                         />
                                         <div className="noteFooter">
-                                            <div className='deleteIcon'><BsThreeDotsVertical size={25} onClick={()=>setFooterDropDown(index)} /></div>
+                                            <div className='deleteIcon'>
+                                                <BsThreeDotsVertical size={25} onClick={()=>setFooterDropDown(index)} />
+                                                {
+                                                    notes.pinned ? <BsFillPinAngleFill size={25} /> : null
+                                                }
+                                            </div>
                                             {
                                                 footerDropDown === index ? <div className='footerDropDown' onMouseLeave={()=>setFooterDropDown()}>
                                                 <div className="delete" onClick={()=>{handleDelete(index);setFooterDropDown()}}>
                                                     <AiOutlineDelete size={25} />
                                                 </div>
-                                                <div className='pinIcon'>
+                                                <div className='pinIcon' onClick={()=>handlePin(notes.note, index)}>
                                                     <BsFillPinAngleFill size={25} />
                                                 </div>
                                             </div> : null
